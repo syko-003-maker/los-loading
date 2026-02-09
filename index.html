@@ -7,38 +7,26 @@
 
   <style>
     :root{
-      --bg0:#070a12;
-      --bg1:#0b1222;
-      --bg2:#111c33;
-      --accent:#3b82f6;
-      --accent2:#22c55e;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --glass: rgba(255,255,255,0.06);
-      --glass2: rgba(255,255,255,0.10);
+      --bg0:#070a12; --bg1:#0b1222; --bg2:#111c33;
+      --accent:#3b82f6; --accent2:#22c55e;
+      --text:#e5e7eb; --muted:#9ca3af;
       --shadow: rgba(0,0,0,0.55);
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
-      overflow:hidden;
-      color:var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      margin:0; overflow:hidden; color:var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
         radial-gradient(1200px 800px at 20% 30%, rgba(59,130,246,0.20), transparent 55%),
         radial-gradient(900px 600px at 80% 70%, rgba(34,197,94,0.16), transparent 60%),
         linear-gradient(135deg, var(--bg0), var(--bg1) 45%, var(--bg2));
     }
 
-    /* grain */
     .grain{
       position:fixed; inset:0;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      mix-blend-mode:overlay;
-      opacity:.20;
-      pointer-events:none;
+      mix-blend-mode:overlay; opacity:.18; pointer-events:none;
       animation: grainMove 10s steps(10) infinite;
     }
     @keyframes grainMove{
@@ -50,15 +38,10 @@
       100%{transform:translate(0,0)}
     }
 
-    /* floating blobs */
     .blob{
-      position:absolute;
-      width:520px; height:520px;
-      filter: blur(40px);
-      opacity:.55;
-      border-radius: 50%;
-      pointer-events:none;
-      transform: translate(-50%,-50%);
+      position:absolute; width:540px; height:540px;
+      filter: blur(44px); opacity:.55; border-radius: 50%;
+      pointer-events:none; transform: translate(-50%,-50%);
       animation: drift 18s ease-in-out infinite;
     }
     .blob.b1{left:18%; top:28%; background:rgba(59,130,246,.35)}
@@ -69,77 +52,50 @@
     }
 
     .wrap{
-      position:relative;
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      position:relative; height:100%;
+      display:flex; align-items:center; justify-content:center;
       padding: clamp(18px, 3vw, 48px);
     }
 
     .panel{
-      width:min(980px, 100%);
+      width:min(920px, 100%);
       border:1px solid rgba(255,255,255,0.12);
       background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
       box-shadow: 0 30px 80px var(--shadow);
       border-radius: 24px;
       overflow:hidden;
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      min-height: 380px;
-    }
-
-    .left{
-      padding: 28px 28px 22px 28px;
+      padding: 26px;
       display:flex;
       flex-direction:column;
-      gap:18px;
+      gap:16px;
     }
 
     .topline{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
+      display:flex; align-items:center; gap:14px; min-width:0;
     }
 
     .logo{
-      width:44px; height:44px;
-      border-radius: 14px;
+      width:44px; height:44px; border-radius: 14px;
       background: linear-gradient(135deg, rgba(59,130,246,.95), rgba(34,197,94,.75));
       box-shadow: 0 12px 30px rgba(59,130,246,.25);
-      position:relative;
-      flex: 0 0 auto;
+      position:relative; flex:0 0 auto;
     }
     .logo:after{
-      content:"";
-      position:absolute; inset:2px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.25);
+      content:""; position:absolute; inset:2px;
+      border-radius: 12px; border: 1px solid rgba(255,255,255,0.25);
     }
 
     .title{
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size: 26px; font-weight: 800; letter-spacing: .2px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
     .subtitle{
-      font-size: 13px;
-      color: var(--muted);
-      margin-top:2px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size: 13px; color: var(--muted); margin-top:2px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
 
     .badge{
@@ -157,18 +113,12 @@
       border-radius: 16px;
       border:1px solid rgba(255,255,255,0.10);
       background: rgba(0,0,0,0.18);
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+      display:flex; flex-direction:column; gap:10px;
     }
 
     .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      font-size:13px;
-      color: var(--muted);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      font-size:13px; color: var(--muted);
     }
     .row strong{color:var(--text); font-weight:600}
 
@@ -180,11 +130,9 @@
       border:1px solid rgba(255,255,255,0.10);
     }
     .progressInner{
-      height:100%;
-      width: 0%;
+      height:100%; width: 0%;
       border-radius: 999px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
-      box-shadow: 0 12px 35px rgba(59,130,246,.25);
       transition: width .25s ease;
       position:relative;
     }
@@ -202,18 +150,7 @@
     }
 
     .hint{
-      font-size: 12px;
-      color: var(--muted);
-      line-height:1.35;
-    }
-
-    .right{
-      border-left: 1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.12);
-      padding: 22px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
+      font-size: 12px; color: var(--muted); line-height:1.35;
     }
 
     .card{
@@ -224,60 +161,24 @@
     }
 
     .kicker{
-      font-size: 11px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: #c7d2fe;
-      opacity:.9;
-      margin-bottom: 8px;
+      font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+      color: #c7d2fe; opacity:.9; margin-bottom: 8px;
     }
 
     .big{
-      font-size: 18px;
-      font-weight: 750;
-      margin: 0 0 6px 0;
+      font-size: 18px; font-weight: 750; margin: 0 0 6px 0;
     }
 
     .tip{
-      margin:0;
-      font-size: 13px;
-      color: var(--muted);
-      line-height:1.4;
-      min-height: 36px;
+      margin:0; font-size: 13px; color: var(--muted); line-height:1.4;
+      min-height: 34px;
     }
-
-    .metaGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-    }
-    .pill{
-      border-radius: 14px;
-      padding: 10px 12px;
-      border:1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.12);
-      font-size: 12px;
-      color: var(--muted);
-      overflow:hidden;
-      text-overflow:ellipsis;
-      white-space:nowrap;
-    }
-    .pill strong{color:var(--text)}
 
     .footer{
       margin-top:auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
       color: rgba(255,255,255,0.55);
       font-size: 11px;
-    }
-
-    /* responsive */
-    @media (max-width: 860px){
-      .panel{grid-template-columns: 1fr}
-      .right{border-left:none; border-top:1px solid rgba(255,255,255,0.10)}
     }
   </style>
 </head>
@@ -289,65 +190,51 @@
 
   <div class="wrap">
     <div class="panel">
-      <div class="left">
-        <div class="topline">
-          <div class="brand">
-            <div class="logo" aria-hidden="true"></div>
-            <div style="min-width:0">
-              <div class="title" id="serverName">Los Esperados</div>
-              <div class="subtitle" id="serverSub">Serveur d'entraînement</div>
-            </div>
+      <div class="topline">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div style="min-width:0">
+            <div class="title" id="serverName">Los Esperados</div>
+            <div class="subtitle" id="serverSub">Serveur d'entraînement</div>
           </div>
-          <div class="badge" id="badge">Connexion…</div>
+        </div>
+        <div class="badge" id="badge">Connexion…</div>
+      </div>
+
+      <div class="statusBox">
+        <div class="row">
+          <span>Status</span>
+          <strong id="statusText">Initialisation…</strong>
         </div>
 
-        <div class="statusBox">
-          <div class="row">
-            <span>Status</span>
-            <strong id="statusText">Initialisation…</strong>
-          </div>
+        <div class="progressOuter" aria-label="Progression">
+          <div class="progressInner" id="progressBar"></div>
+        </div>
 
-          <div class="progressOuter" aria-label="Progression">
-            <div class="progressInner" id="progressBar"></div>
-          </div>
+        <div class="row">
+          <span id="fileLabel">Progression</span>
+          <strong id="fileText">0%</strong>
+        </div>
 
-          <div class="row">
-            <span id="fileLabel">Fichiers</span>
-            <strong id="fileText">0 / 0</strong>
-          </div>
-
-          <div class="hint" id="hint">
-            Astuce : Gun Fight, Build et Conduite sont disponibles pour l'entraînement.
-          </div>
+        <div class="hint" id="hint">
+          Bienvenue sur le serveur d'entraînement de Los Esperados — Gun Fight • Build • Conduite
         </div>
       </div>
 
-      <div class="right">
-        <div class="card">
-          <div class="kicker">Entraînements</div>
-          <div class="big" id="modeTitle">Gun Fight</div>
-          <p class="tip" id="modeTip">Travail des angles, peek, recoil et prise d'info rapide.</p>
-        </div>
+      <div class="card">
+        <div class="kicker">Entraînements</div>
+        <div class="big" id="modeTitle">Gun Fight</div>
+        <p class="tip" id="modeTip">Travail des angles, peek, recoil et prise d'info rapide.</p>
+      </div>
 
-        <div class="metaGrid">
-          <div class="pill"><strong>Map :</strong> <span id="mapName">—</span></div>
-          <div class="pill"><strong>Gamemode :</strong> <span id="gmName">—</span></div>
-          <div class="pill"><strong>Serveur :</strong> <span id="hostName">—</span></div>
-          <div class="pill"><strong>SteamID :</strong> <span id="steamId">—</span></div>
-        </div>
-
-        <div class="footer">
-          <span>Los Esperados • Training</span>
-          <span id="clock">—</span>
-        </div>
+      <div class="footer">
+        <span>Los Esperados • Training</span>
+        <span id="clock">—</span>
       </div>
     </div>
   </div>
 
   <script>
-    // ------------------------------
-    // UI helpers
-    // ------------------------------
     const el = (id) => document.getElementById(id);
 
     const tips = [
@@ -356,39 +243,21 @@
       { title: "Conduite", tip: "Trajectoires, freinage, évitement et conduite rapide en zone." },
     ];
     let tipIdx = 0;
-
-    function rotateTips(){
+    setInterval(() => {
       tipIdx = (tipIdx + 1) % tips.length;
       el("modeTitle").textContent = tips[tipIdx].title;
       el("modeTip").textContent = tips[tipIdx].tip;
-    }
-    setInterval(rotateTips, 6500);
+    }, 6500);
 
-    function setBadge(text){
-      el("badge").textContent = text;
-    }
-
+    function setBadge(text){ el("badge").textContent = text; }
     function setStatus(text){
       el("statusText").textContent = text || "Chargement…";
-      el("hint").textContent = "Bienvenue sur le serveur d'entraînement de Los Esperados. Gun Fight • Build • Conduite.";
     }
-
     function setProgress(p){
       p = Math.max(0, Math.min(1, p));
-      el("progressBar").style.width = (p * 100).toFixed(1) + "%";
+      el("progressBar").style.width = (p*100).toFixed(1) + "%";
+      el("fileText").textContent = Math.round(p*100) + "%";
     }
-
-    let filesTotal = 0;
-    let filesDone = 0;
-    let fakeP = 0;
-
-    // Petit mouvement si le serveur n’envoie pas d’events
-    setInterval(() => {
-      if (filesTotal <= 0){
-        fakeP = Math.min(0.85, fakeP + 0.01);
-        setProgress(fakeP);
-      }
-    }, 180);
 
     // Horloge
     setInterval(() => {
@@ -396,49 +265,68 @@
       el("clock").textContent = d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
     }, 500);
 
-    // ------------------------------
-    // Garry's Mod loading callbacks
-    // ------------------------------
-    // Ces fonctions sont appelées par GMod pendant le chargement.
-    // Si elles ne sont pas appelées, l’UI reste en mode "fake progress".
+    // --- Progression hybride ---
+    // Si GMod envoie des events : vrai pourcentage.
+    // Sinon : progression douce jusqu'à 90%, puis attend la connexion.
+    let filesTotal = 0;
+    let filesDone = 0;
+    let p = 0;
+    let gmodDriven = false;
 
+    function tickFake(){
+      if (gmodDriven) return;
+      // avance doucement puis ralentit
+      const target = 0.90;
+      const speed = 0.003 + (0.010 * (1 - p)); // plus rapide au début
+      p = Math.min(target, p + speed);
+      setProgress(p);
+      requestAnimationFrame(tickFake);
+    }
+    requestAnimationFrame(tickFake);
+
+    // --- Callbacks GMod ---
     window.SetStatusChanged = function(status){
-      // status est un texte (connexion, téléchargement, etc.)
       setStatus(status);
       setBadge("Chargement…");
     };
 
     window.SetFilesTotal = function(total){
       filesTotal = Number(total) || 0;
-      el("fileText").textContent = `${filesDone} / ${filesTotal}`;
+      if (filesTotal > 0) gmodDriven = true;
     };
-
     window.SetFilesNeeded = function(needed){
-      // some servers call this instead
       filesTotal = Number(needed) || filesTotal || 0;
-      el("fileText").textContent = `${filesDone} / ${filesTotal}`;
-    };
-
-    window.DownloadingFile = function(fileName){
-      // fileName = nom du fichier
-      setBadge("Téléchargement…");
-      if (fileName) el("hint").textContent = "Téléchargement : " + fileName;
+      if (filesTotal > 0) gmodDriven = true;
     };
 
     window.SetFileFinished = function(){
       filesDone++;
       if (filesTotal > 0){
-        el("fileText").textContent = `${filesDone} / ${filesTotal}`;
-        setProgress(Math.min(0.98, filesDone / filesTotal));
-      }
-      if (filesTotal > 0 && filesDone >= filesTotal){
-        setBadge("Finalisation…");
-        setProgress(0.99);
+        gmodDriven = true;
+        const real = Math.min(0.98, filesDone / filesTotal);
+        p = Math.max(p, real);
+        setProgress(p);
+        if (filesDone >= filesTotal){
+          setBadge("Finalisation…");
+          setProgress(0.99);
+        }
       }
     };
 
-    // Infos serveur si GMod les fournit
-    window.GameDetails = function(servername, serverurl, mapname, maxplayers, steamid, gamemode){
+    window.DownloadingFile = function(fileName){
+      setBadge("Téléchargement…");
+      if (fileName) el("hint").textContent = "Téléchargement : " + fileName;
+    };
+
+    window.GameDetails = function(servername){
       if (servername) el("serverName").textContent = servername;
-      if (mapname) el("mapName").textContent = mapname;
-      if (g
+      setBadge("Connexion…");
+    };
+
+    // Fallback start
+    setStatus("Connexion au serveur…");
+    setBadge("Connexion…");
+    setProgress(0.02);
+  </script>
+</body>
+</html>
